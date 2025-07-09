@@ -103,6 +103,54 @@ Exit Code Meaning
 0 Success
 1+ Error occurred (non-zero value)
 
+**Commenting**
+Commenting in Python is a way to explain your code, make it more readable, and help other developers (or your future self) understand what your code is doing.
+
+Here’s a quick guide to Python commenting:
+
+1. Single-line comments
+   Use the # symbol.
+
+# This is a single-line comment
+
+x = 5 # This is an inline comment
+
+2. Multi-line comments
+   Python doesn’t have a native multi-line comment syntax, but you can use multiple # symbols:
+
+# This is a multi-line comment
+
+# that spans more than one line
+
+# to explain the code below
+
+x = x + 1
+Alternatively, triple-quoted strings (''' or """) are sometimes used as block comments, but they’re technically string literals and not true comments:
+
+"""
+This is a block comment.
+It's not ignored by the interpreter if it's not assigned.
+Use only when necessary.
+""" 3. Docstrings (Documentation Strings)
+Used to describe modules, functions, classes, or methods.
+
+def add(a, b):
+"""Return the sum of a and b."""
+return a + b
+You can access docstrings using:
+
+help(add)
+print(add.**doc**)
+Best Practices:
+Keep comments concise and relevant.
+
+Don’t state the obvious. For example, avoid this:
+
+x = 5 # Set x to 5
+Use docstrings for all public functions and classes.
+
+Update comments when code changes.
+
 **Concatenation?**
 
 - Concatenation means joining two or more strings (text) together.
@@ -606,3 +654,249 @@ Term Meaning
 Implicit Conversion Python automatically changes data types
 Goal Prevent errors and promote safe calculations
 Trigger Mixed-type expressions (e.g., int + float)
+
+**🧮 What is Flooring a Number in Python?**
+Flooring a number means rounding it down to the nearest integer that is less than or equal to the number.
+
+✅ Example:
+import math
+
+`print(math.floor(3.9))`# Output: 3
+`print(math.floor(-3.9))` # Output: -4
+3.9 becomes 3
+
+-3.9 becomes -4 (it goes downward, not toward zero)
+
+🔧 Syntax:
+import math
+math.floor(number)
+You must import the math module to use math.floor()
+
+📌 Difference between floor() and int():
+Function Behavior
+math.floor() Always rounds downward
+int() Removes decimal part (rounds towards 0)
+
+✅ Example:
+import math
+
+print(math.floor(-3.7)) # -4
+print(int(-3.7)) # -3
+
+💡 Bonus: Floor Division Operator (//)
+Python also supports floor division using //, which returns the floored result of a division:
+print(7 // 2) # 3
+print(-7 // 2) # -4
+
+📚 Summary:
+
+- Flooring means rounding down to the nearest whole number.
+
+- Use math.floor(x) to floor a number.
+
+- Use // to do floor division.
+
+- int(x) and math.floor(x) may give different results for negative numbers.
+
+**🔁 round() Function in Python**
+The round() function is used to round a number to the nearest integer or to a specified number of decimal places.
+
+✅ Basic Syntax:
+round(number, ndigits)
+number: The floating-point number you want to round.
+
+ndigits (optional): The number of decimal places to round to.
+
+If not provided, it rounds to the nearest integer.
+
+🔍 Examples:
+
+1. Rounding to Nearest Integer:
+   print(round(4.6)) # 5
+   print(round(4.3)) # 4
+
+2. Rounding to Specific Decimal Places:
+   print(round(3.14159, 2)) # 3.14
+   print(round(3.14159, 3)) # 3.142
+
+3. Rounding Negative Numbers:
+   print(round(-2.3)) # -2
+   print(round(-2.7)) # -3
+
+⚠️ Tie-breaking Rule (Banker's Rounding)
+Python uses round-half-to-even strategy (also called Banker’s rounding). That means:
+
+print(round(2.5)) # 2 (nearest even)
+print(round(3.5)) # 4 (nearest even)
+This avoids rounding bias in large datasets.
+
+💡 Note:
+round() returns an int if ndigits is not specified.
+
+Returns a float if you round to decimal places.
+
+🧠 Summary:
+
+- Use Case Code Example Result
+- Round to nearest integer round(2.7) 3
+- Round to 2 decimal places round(2.71828, 2) 2.72
+- Round 2.5 round(2.5) 2
+- Round 3.5 round(3.5) 4
+
+**🔤 What is an f-string in Python?**
+f-strings (formatted string literals) are a concise and readable way to embed expressions, variables, or function calls directly inside strings using {}.
+
+Introduced in Python 3.6, they start with the letter f or F before the string.
+
+✅ Basic Syntax:
+name = "Nagendra"
+print(f"Hello, {name}!") # Hello, Nagendra!
+💡 Why Use f-strings?
+Cleaner and more readable
+
+Faster than format() or concatenation
+
+Supports expressions inside {}
+
+🔍 Examples:
+
+1. Inserting Variables:
+   age = 25
+   print(f"I am {age} years old.") # I am 25 years old.
+
+2. Expressions Inside f-strings:
+   x = 5
+   y = 10
+   print(f"Sum: {x + y}") # Sum: 15
+
+3. Calling Functions:
+   def greet(name):
+   return f"Hi, {name}!"
+
+print(f"{greet('Nagendra')} Welcome!") # Hi, Nagendra! Welcome!
+
+4. Formatting Numbers:
+   pi = 3.14159
+   print(f"Value of pi: {pi:.2f}") # Value of pi: 3.14
+   :.2f → format float to 2 decimal places
+
+5. Using Dictionaries or Lists:
+   person = {"name": "Ram", "age": 30}
+   print(f"{person['name']} is {person['age']} years old.") # Ram is 30 years old.
+
+⚠️ Rules:
+
+- f-strings only work in Python 3.6+
+
+- Expressions must be valid Python code
+
+- You can’t use backslashes (\) inside expressions
+
+🧠 Summary
+
+- Feature Example Output
+  -p Variable Insert f"Name: {name}" Name: Nagendra
+- Expression f"{a + b}" Sum result
+- Decimal Format f"{pi:.2f}" 3.14
+- Function Call f"{greet('Ram')}" Hi, Ram!
+
+### Conditional Statements, Logical Operators, Code Blocks and Scope
+
+🔀 Python Conditional Statements – All Rules & Details
+Conditional statements allow you to make decisions in your code based on conditions. These are core to control flow in Python.
+
+🧱 1. The if Statement
+Executes a block of code only if a condition is True.
+
+x = 10
+
+if x > 5:
+print("x is greater than 5")
+
+🧱 2. The else Statement
+Provides an alternative block if the if condition is False.
+
+x = 2
+
+if x > 5:
+print("x is greater than 5")
+else:
+print("x is 5 or less")
+
+🧱 3. The elif (Else If) Statement
+Checks multiple conditions in sequence.
+
+x = 5
+
+if x > 10:
+print("x > 10")
+elif x == 5:
+print("x is exactly 5")
+else:
+print("x is less than 10 and not 5")
+✅ Only one block will execute — the first condition that is true.
+
+✅ 4. Indentation Matters
+Python uses indentation to define blocks.
+
+if True:
+print("This is inside the if")
+print("This is outside the if")
+
+🔗 5. Comparison Operators
+Operator Meaning Example
+== Equal to x == y
+!= Not equal to x != y
+
+>     Greater than	x > y
+>
+> < Less than x < y
+> = Greater than or equal x >= y
+> <= Less than or equal x <= y
+
+🔀 6. Logical Operators
+Used to combine multiple conditions.
+
+Operator Description Example
+and Both conditions must be True x > 3 and x < 10
+or At least one condition is True x < 3 or x > 8
+not Inverts a condition not(x > 5) is True if x <= 5
+
+🧠 7. Nested Conditions
+You can write if statements inside another if.
+
+x = 15
+if x > 10:
+if x < 20:
+print("x is between 10 and 20")
+
+🧪 8. Ternary / One-line if
+Short-hand for if-else.
+
+x = 10
+result = "Even" if x % 2 == 0 else "Odd"
+print(result) # Even
+
+🚫 9. Falsy and Truthy Values
+In conditions, Python treats the following as False:
+
+0, 0.0
+
+None
+
+False
+
+Empty structures: '', [], {}, ()
+
+Everything else is considered True.
+
+if []:
+print("Won't print")
+else:
+print("This will print")
+
+📌 Summary Flow:
+
+if condition1: # block A
+elif condition2: # block B
+else: # block C
